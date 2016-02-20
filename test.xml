@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<GCC_XML cvs_revision="1.135">
+  <Class id="_130" name="test_class" context="_1" abstract="1" mangled="10test_class" demangled="test_class" location="f1:4" file="f1" line="4" artificial="1" size="64" align="64" members="_184 _185 _186 _187 _188 " bases=""/>
+  <Class id="_152" name="b" context="_1" mangled="1b" demangled="b" location="f1:10" file="f1" line="10" artificial="1" size="64" align="64" members="_198 _199 _200 _201 _202 _203 " bases="_130 ">
+    <Base type="_130" access="public" virtual="0" offset="0"/>
+  </Class>
+  <Class id="_153" name="c" context="_1" mangled="1c" demangled="c" location="f1:17" file="f1" line="17" artificial="1" size="64" align="64" members="_204 _205 _206 _207 _208 _209 " bases="_130 ">
+    <Base type="_130" access="public" virtual="0" offset="0"/>
+  </Class>
+  <Class id="_154" name="d" context="_1" mangled="1d" demangled="d" location="f1:24" file="f1" line="24" artificial="1" size="64" align="64" members="_210 _211 _212 _213 _214 _215 " bases="_153 ">
+    <Base type="_153" access="public" virtual="0" offset="0"/>
+  </Class>
+  <Class id="_155" name="e" context="_1" mangled="1e" demangled="e" location="f1:31" file="f1" line="31" artificial="1" size="64" align="64" members="_216 _217 _218 _219 _220 " bases=""/>
+  <Class id="_156" name="f" context="_1" mangled="1f" demangled="f" location="f1:37" file="f1" line="37" artificial="1" size="64" align="64" members="_221 _222 _223 _224 _225 _226 " bases="_155 ">
+    <Base type="_155" access="public" virtual="0" offset="0"/>
+  </Class>
+  <Class id="_157" name="g" context="_1" mangled="1g" demangled="g" location="f1:44" file="f1" line="44" artificial="1" size="64" align="64" members="_227 _228 _229 _230 _231 _232 " bases="_155 ">
+    <Base type="_155" access="public" virtual="0" offset="0"/>
+  </Class>
+  <Class id="_158" name="h" context="_1" mangled="1h" demangled="h" location="f1:51" file="f1" line="51" artificial="1" size="64" align="64" members="_233 _234 _235 _236 _237 _238 " bases="_157 ">
+    <Base type="_157" access="public" virtual="0" offset="0"/>
+  </Class>
+  <Class id="_146" name="hd" context="_1" mangled="2hd" demangled="hd" location="f1:58" file="f1" line="58" artificial="1" size="192" align="64" members="_189 _190 _191 _192 _193 _194 _195 _196 _197 " bases="_158 _154 ">
+    <Base type="_158" access="public" virtual="0" offset="0"/>
+    <Base type="_154" access="public" virtual="0" offset="8"/>
+  </Class>
+  <Constructor id="_187" name="test_class" artificial="1" throw="" context="_130" access="public" mangled="_ZN10test_classC1Ev *INTERNAL* " demangled="test_class::test_class()" location="f1:4" file="f1" line="4" endline="4" inline="1"/>
+  <Method id="_188" name="a_show" returns="_160" virtual="1" pure_virtual="1" overrides="" context="_130" access="public" mangled="_ZN10test_class6a_showEv" demangled="test_class::a_show()" location="f1:6" file="f1" line="6" extern="1"/>
+<Constructor id="_201" name="b" artificial="1" throw="" context="_152" access="public" mangled="_ZN1bC1Ev *INTERNAL* " demangled="b::b()" location="f1:10" file="f1" line="10" endline="10" inline="1"/>
+  <Method id="_202" name="a_show" returns="_160" virtual="1" overrides="_188 " context="_152" access="public" mangled="_ZN1b6a_showEv" demangled="b::a_show()" location="f1:12" file="f1" line="12" endline="12" inline="1"/>
+  <Method id="_203" name="b_show" returns="_160" context="_152" access="public" mangled="_ZN1b6b_showEv" demangled="b::b_show()" location="f1:13" file="f1" line="13" endline="13" inline="1"/>
+  <Constructor id="_207" name="c" artificial="1" throw="" context="_153" access="public" mangled="_ZN1cC1Ev *INTERNAL* " demangled="c::c()" location="f1:17" file="f1" line="17" endline="17" inline="1"/>
+  <Constructor id="_187" name="test_class" artificial="1" throw="" context="_130" access="public" mangled="_ZN10test_classC1Ev *INTERNAL* " demangled="test_class::test_class()" location="f1:4" file="f1" line="4" endline="4" inline="1"/>
+  <Method id="_188" name="a_show" returns="_160" virtual="1" pure_virtual="1" overrides="" context="_130" access="public" mangled="_ZN10test_class6a_showEv" demangled="test_class::a_show()" location="f1:6" file="f1" line="6" extern="1"/>
+  <Variable id="_189" name="check_int" type="_164c" init="8042342" context="_146" access="public" mangled="_ZN2hd9check_intE" demangled="hd::check_int" location="f1:60" file="f1" line="60" static="1" extern="1"/>
+  <Field id="_190" name="check_double" type="_159" offset="128" context="_146" access="public" location="f1:61" file="f1" line="61"/>
+  <Method id="_208" name="a_show" returns="_160" virtual="1" overrides="_188 " context="_153" access="public" mangled="_ZN1c6a_showEv" demangled="c::a_show()" location="f1:19" file="f1" line="19" endline="19" inline="1"/>
+  <Method id="_209" name="c_show" returns="_160" context="_153" access="public" mangled="_ZN1c6c_showEv" demangled="c::c_show()" location="f1:20" file="f1" line="20" endline="20" inline="1"/>
+  <Constructor id="_213" name="d" artificial="1" throw="" context="_154" access="public" mangled="_ZN1dC1Ev *INTERNAL* " demangled="d::d()" location="f1:24" file="f1" line="24" endline="24" inline="1"/>
+  <Method id="_214" name="a_show" returns="_160" virtual="1" overrides="_208 " context="_154" access="public" mangled="_ZN1d6a_showEv" demangled="d::a_show()" location="f1:26" file="f1" line="26" endline="26" inline="1"/>
+  <Method id="_215" name="d_show" returns="_160" context="_154" access="public" mangled="_ZN1d6d_showEv" demangled="d::d_show()" location="f1:27" file="f1" line="27" endline="27" inline="1"/>
+  <Constructor id="_219" name="e" artificial="1" throw="" context="_155" access="public" mangled="_ZN1eC1Ev *INTERNAL* " demangled="e::e()" location="f1:31" file="f1" line="31" endline="31" inline="1"/>
+  <Method id="_220" name="e_show" returns="_160" virtual="1" overrides="" context="_155" access="public" mangled="_ZN1e6e_showEv" demangled="e::e_show()" location="f1:33" file="f1" line="33" endline="33" inline="1"/>
+  <Constructor id="_224" name="f" artificial="1" throw="" context="_156" access="public" mangled="_ZN1fC1Ev *INTERNAL* " demangled="f::f()" location="f1:37" file="f1" line="37" endline="37" inline="1"/>
+  <Method id="_225" name="e_show" returns="_160" virtual="1" overrides="_220 " context="_156" access="public" mangled="_ZN1f6e_showEv" demangled="f::e_show()" location="f1:39" file="f1" line="39" endline="39" inline="1"/>
+  <Method id="_226" name="f_show" returns="_160" context="_156" access="public" mangled="_ZN1f6f_showEv" demangled="f::f_show()" location="f1:40" file="f1" line="40" endline="40" inline="1"/>
+  <Constructor id="_230" name="g" artificial="1" throw="" context="_157" access="public" mangled="_ZN1gC1Ev *INTERNAL* " demangled="g::g()" location="f1:44" file="f1" line="44" endline="44" inline="1"/>
+  <Method id="_231" name="e_show" returns="_160" virtual="1" overrides="_220 " context="_157" access="public" mangled="_ZN1g6e_showEv" demangled="g::e_show()" location="f1:46" file="f1" line="46" endline="46" inline="1"/>
+  <Method id="_232" name="g_show" returns="_160" context="_157" access="public" mangled="_ZN1g6g_showEv" demangled="g::g_show()" location="f1:47" file="f1" line="47" endline="47" inline="1"/>
+  <Constructor id="_236" name="h" artificial="1" throw="" context="_158" access="public" mangled="_ZN1hC1Ev *INTERNAL* " demangled="h::h()" location="f1:51" file="f1" line="51" endline="51" inline="1"/>
+  <Method id="_237" name="e_show" returns="_160" virtual="1" overrides="_231 " context="_158" access="public" mangled="_ZN1h6e_showEv" demangled="h::e_show()" location="f1:53" file="f1" line="53" endline="53" inline="1"/>
+  <Method id="_238" name="h_show" returns="_160" context="_158" access="public" mangled="_ZN1h6h_showEv" demangled="h::h_show()" location="f1:54" file="f1" line="54" endline="54" inline="1"/>
+  <Variable id="_189" name="check_int" type="_164c" init="8042342" context="_146" access="public" mangled="_ZN2hd9check_intE" demangled="hd::check_int" location="f1:60" file="f1" line="60" static="1" extern="1"/>
+  <Field id="_190" name="check_double" type="_159" offset="128" context="_146" access="public" location="f1:61" file="f1" line="61"/>
+  <Constructor id="_194" name="hd" artificial="1" throw="" context="_146" access="public" mangled="_ZN2hdC1Ev *INTERNAL* " demangled="hd::hd()" location="f1:58" file="f1" line="58" endline="58" inline="1"/>
+  <Method id="_195" name="e_show" returns="_160" virtual="1" overrides="_237 " context="_146" access="public" mangled="_ZN2hd6e_showEv" demangled="hd::e_show()" location="f1:62" file="f1" line="62" endline="62" inline="1"/>
+  <Method id="_196" name="a_show" returns="_160" virtual="1" overrides="_214 " context="_146" access="public" mangled="_ZN2hd6a_showEv" demangled="hd::a_show()" location="f1:63" file="f1" line="63" endline="63" inline="1"/>
+  <Method id="_197" name="hd_show" returns="_160" context="_146" access="public" mangled="_ZN2hd7hd_showEv" demangled="hd::hd_show()" location="f1:64" file="f1" line="64" endline="64" inline="1"/>
+</GCC_XML>
