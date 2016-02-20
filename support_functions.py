@@ -44,6 +44,34 @@ def get_classes_graph(untangle_obj):
 	return graph
 
 
+def get_methods_hash(untangle_obj):
+	def get_method_hash(untangle_method):
+		method_hash = {}
+		# <Method id="_202" name="a_show" returns="_160" virtual="1" overrides="_188 " context="_152"
+		# access="public" mangled="_ZN1b6a_showEv" demangled="b::a_show()" location="f1:12" file="f1"
+		# line="12" endline="12" inline="1"/>
+		method_hash['id'] = str(untangle_method['id'])
+		method_hash['name'] = str(untangle_method['name'])
+		method_hash['returns'] = str(untangle_method['returns'])
+		method_hash['virtual'] = str(untangle_method['virtual'])
+		method_hash['overrides'] = str(untangle_method['overrides'])
+		method_hash['access'] = str(untangle_method['access'])
+		method_hash['file'] = str(untangle_method['file'])
+		method_hash['line'] = str(untangle_method['line'])
+		method_hash['endline'] = str(untangle_method['endline'])
+		if untangle_method['endline'] != 'None':
+			method_hash['method_size'] = int(str(untangle_method['endline'])) - int(str(untangle_method['line']))
+		else:
+			method_hash['method_size'] = 0
+		method_hash['inline'] = str(untangle_method['inline'])
+		return method_hash
+
+	methods_hash = {}
+	for Method in untangle_obj.Method:
+		methods_hash[str(Method['id'])] = get_method_hash(Method)
+	return methods_hash
+
+
 def get_classes_leafs(graph, untangle_obj):
 	return [str(Class['id']) for Class in untangle_obj.Class if graph[str(Class['id'])]['childs'] == '']
 

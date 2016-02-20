@@ -26,7 +26,7 @@
   </Class>
   <Constructor id="_187" name="test_class" artificial="1" throw="" context="_130" access="public" mangled="_ZN10test_classC1Ev *INTERNAL* " demangled="test_class::test_class()" location="f1:4" file="f1" line="4" endline="4" inline="1"/>
   <Method id="_188" name="a_show" returns="_160" virtual="1" pure_virtual="1" overrides="" context="_130" access="public" mangled="_ZN10test_class6a_showEv" demangled="test_class::a_show()" location="f1:6" file="f1" line="6" extern="1"/>
-<Constructor id="_201" name="b" artificial="1" throw="" context="_152" access="public" mangled="_ZN1bC1Ev *INTERNAL* " demangled="b::b()" location="f1:10" file="f1" line="10" endline="10" inline="1"/>
+  <Constructor id="_201" name="b" artificial="1" throw="" context="_152" access="public" mangled="_ZN1bC1Ev *INTERNAL* " demangled="b::b()" location="f1:10" file="f1" line="10" endline="10" inline="1"/>
   <Method id="_202" name="a_show" returns="_160" virtual="1" overrides="_188 " context="_152" access="public" mangled="_ZN1b6a_showEv" demangled="b::a_show()" location="f1:12" file="f1" line="12" endline="12" inline="1"/>
   <Method id="_203" name="b_show" returns="_160" context="_152" access="public" mangled="_ZN1b6b_showEv" demangled="b::b_show()" location="f1:13" file="f1" line="13" endline="13" inline="1"/>
   <Constructor id="_207" name="c" artificial="1" throw="" context="_153" access="public" mangled="_ZN1cC1Ev *INTERNAL* " demangled="c::c()" location="f1:17" file="f1" line="17" endline="17" inline="1"/>
