@@ -1,23 +1,47 @@
 digraph "Classes Graph" {
-	node [shape=Box]
-	_157 [label=g]
-	_156 [label=f]
-	_155 [label=e]
-	_154 [label=d]
-	_153 [label=c]
-	_152 [label=b]
-	_146 [label=hd]
-	_158 [label=h]
-	_130 [label=test_class]
+	node [shape=box]
+	_157 [label="g
+_______
+e_show()
+g_show()"]
+	_156 [label="f
+_______
+e_show()
+f_show()"]
+	_155 [label="e
+_______
+e_show()"]
+	_154 [label="d
+_______
+a_show()
+d_show()"]
+	_153 [label="c
+_______
+a_show()
+c_show()"]
+	_152 [label="b
+_______
+a_show()
+b_show()"]
+	_146 [label="hd
+_______
+e_show()
+a_show()
+hd_show()
+h_show()
+g_show()"]
+	_158 [label="h
+_______
+e_show()
+h_show()"]
+	_130 [label="test_class
+_______
+a_show()"]
 		_157 -> _158
-		_156 -> ""
 		_155 -> _156
 		_155 -> _157
 		_154 -> _146
 		_153 -> _154
-		_152 -> ""
-		_146 -> ""
-		_158 -> _146
 		_130 -> _152
 		_130 -> _153
 }
