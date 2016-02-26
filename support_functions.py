@@ -15,6 +15,11 @@ def get_classes_graph(untangle_obj):
 		def get_class_childs(class_id):
 			return ' '.join([str(Class['id']) for Class in untangle_obj.Class if class_id in Class['bases'].split(' ')])
 
+		# <Class id="_152" name="b" context="_1" mangled="1b" demangled="b" location="f1:10"
+		# file="f1" line="10" artificial="1" size="64" align="64"
+		# members="_198 _199 _200 _201 _202 _203 " bases="_130 ">
+		# <Base type="_130" access="public" virtual="0" offset="0"/>
+		# </Class>
 		class_hash = {}
 		class_hash['file'] = str(untangle_class['file'])
 		class_hash['childs'] = get_class_childs(untangle_class['id'])
@@ -70,9 +75,9 @@ def add_inherited_methods_to_classes(graph, untangle_obj):
 
 			methods_list = [str(Method['id']) for Method in untangle_obj.Method]
 			bases_members = [get_method_name_by_id(x) for x in graph[base_id]['members'].split(' ') if
-							x in methods_list]
+							 x in methods_list]
 			childs_members = [get_method_name_by_id(x) for x in graph[child_id]['members'].split(' ') if
-							x in methods_list]
+							  x in methods_list]
 			return ' '.join([get_method_id_by_name(x) for x in bases_members if x not in childs_members])
 
 		graph[child_id]['members'] += get_inherited_methods() + ' '
