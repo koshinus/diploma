@@ -2,14 +2,7 @@ def get_classes_id_list(untangle_obj):
 	return [str(Class['id']) for Class in untangle_obj.Class]
 
 
-def get_classes_roots_list(untangle_obj):
-	return [str(Class['id']) for Class in untangle_obj.Class if Class['bases'] == '']
-
-
-def get_classes_leafs(graph, untangle_obj):
-	return [str(Class['id']) for Class in untangle_obj.Class if graph[str(Class['id'])]['childs'] == '']
-
-
+# --------------------------------------------------------------------
 def get_classes_graph(untangle_obj):
 	def form_class_hash(untangle_class):
 		def get_class_childs(class_id):
@@ -35,6 +28,7 @@ def get_classes_graph(untangle_obj):
 	return graph
 
 
+# --------------------------------------------------------------------
 def get_methods_hash(untangle_obj):
 	def get_method_hash(untangle_method):
 		method_hash = {}
@@ -62,6 +56,7 @@ def get_methods_hash(untangle_obj):
 	return methods_hash
 
 
+# --------------------------------------------------------------------
 def add_inherited_methods_to_classes(graph, untangle_obj):
 	def add_inherited_methods_to_class(base_id, child_id):
 		def get_inherited_methods():
@@ -82,7 +77,7 @@ def add_inherited_methods_to_classes(graph, untangle_obj):
 
 		graph[child_id]['members'] += get_inherited_methods() + ' '
 
-	to_view = get_classes_roots_list(untangle_obj)
+	to_view = [x for x in graph.keys() if graph[x]['bases'] == '']
 	while to_view:
 		base_class = to_view.pop(0)
 		childs = graph[base_class]['childs'].split(' ')
@@ -92,7 +87,8 @@ def add_inherited_methods_to_classes(graph, untangle_obj):
 			add_inherited_methods_to_class(base_class, child)
 
 
-def restructuring_classes_graph(graph, untangle_obj, methods_hash):
+# --------------------------------------------------------------------
+def restructuring_classes_graph(graph, methods_hash):
 	def number_of_inherited_methods(base_id, child_id):
 		base_members = graph[base_id]['members'].split(' ')
 		child_members = graph[child_id]['members'].split(' ')
@@ -109,7 +105,7 @@ def restructuring_classes_graph(graph, untangle_obj, methods_hash):
 		k = list(d.keys())
 		return k[v.index(max(v))]
 
-	to_view = get_classes_leafs(graph, untangle_obj)
+	to_view = [x for x in graph.keys() if graph[x]['childs'] == '']
 	while to_view:
 		child_class = to_view.pop(0)
 		if graph[child_class]['bases'] == '': continue
@@ -128,6 +124,7 @@ def restructuring_classes_graph(graph, untangle_obj, methods_hash):
 				' '.join(x for x in graph[base]['childs'].split(' ') if x != child_class)
 
 
+# --------------------------------------------------------------------
 def generate_java_file(f_name, graph, untangle_obj):
 	def write_class_to_file(class_id):
 		def get_method_name_by_id(method_id):

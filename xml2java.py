@@ -18,7 +18,7 @@ for Class in sf.get_classes_id_list(obj):
 	print Class + ':' + graph[Class]['members']
 
 
-sf.restructuring_classes_graph(graph, obj, methods_hash)
+sf.restructuring_classes_graph(graph, methods_hash)
 for Class in sf.get_classes_id_list(obj):
 	print Class + ':' + graph[Class]['members']
 
