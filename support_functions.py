@@ -110,7 +110,7 @@ def restructuring_classes_graph(graph, methods_hash):
 		child_class = to_view.pop(0)
 		if graph[child_class]['bases'] == '': continue
 		bases = [x for x in graph[child_class]['bases'].split(' ') if x != '']
-		to_view += bases
+		to_view += [x for x in bases if x not in to_view]
 		bases_hash = {}
 		for base in bases:
 			bases_hash[base] = number_of_code_lines_in_inherited_methods(base, child_class)
