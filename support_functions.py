@@ -44,9 +44,10 @@ def get_methods_hash(untangle_obj):
 		method_hash['line'] = str(untangle_method['line'])
 		method_hash['endline'] = str(untangle_method['endline'])
 		if untangle_method['pure_virtual'] == '1':
-			method_hash['method_size'] = 0
+			method_hash['method_size'] = 1
 		else:
-			method_hash['method_size'] = int(str(untangle_method['endline'])) - int(str(untangle_method['line']))
+			method_hash['method_size'] = 1 + \
+				int(str(untangle_method['endline'])) - int(str(untangle_method['line']))
 		method_hash['inline'] = str(untangle_method['inline'])
 		return method_hash
 
@@ -89,16 +90,12 @@ def add_inherited_methods_to_classes(graph, untangle_obj):
 
 # --------------------------------------------------------------------
 def restructuring_classes_graph(graph, methods_hash):
-	def number_of_inherited_methods(base_id, child_id):
-		base_members = graph[base_id]['members'].split(' ')
-		child_members = graph[child_id]['members'].split(' ')
-		return sum(1 for method in child_members if method in base_members)
-
 	def number_of_code_lines_in_inherited_methods(base_id, child_id):
 		base_members = graph[base_id]['members'].split(' ')
 		child_members = graph[child_id]['members'].split(' ')
-		all_together = sum(methods_hash[x]['method_size'] for x in child_members if x in base_members and x != '')
-		return all_together
+		sum_of_code_lines = \
+			sum(methods_hash[x]['method_size'] for x in child_members if x in base_members and x != '')
+		return sum_of_code_lines
 
 	def get_key_with_max_val(d):
 		v = list(d.values())
