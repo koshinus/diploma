@@ -9,8 +9,8 @@ def make_graph_visualization(graph, f_name, methods_hash):
 							if x in methods_hash.keys()])
 		dot.node(key, label=graph[key]['name'] + '\n_______\n' + methods_str + '()')
 	for key in graph.keys():
-		if graph[key]['childs'] == '': continue
-		for child in graph[key]['childs'].split(' '):
+		if graph[key]['children'] == '': continue
+		for child in graph[key]['children'].split(' '):
 			dot.edge(key, child)
 	#print(dot.source)
 	dot.render(f_name, None, True)

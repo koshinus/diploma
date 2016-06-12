@@ -8,9 +8,13 @@ g_show()"]
 _______
 e_show()
 f_show()"]
-	_155 [label="e
+	_146 [label="hd
 _______
-e_show()"]
+e_show()
+a_show()
+hd_show()
+h_show()
+g_show()"]
 	_154 [label="d
 _______
 a_show()
@@ -23,13 +27,9 @@ c_show()"]
 _______
 a_show()
 b_show()"]
-	_146 [label="hd
+	_155 [label="e
 _______
-e_show()
-a_show()
-hd_show()
-h_show()
-g_show()"]
+e_show()"]
 	_158 [label="h
 _______
 e_show()
@@ -38,10 +38,10 @@ h_show()"]
 _______
 a_show()"]
 		_157 -> _158
-		_155 -> _156
-		_155 -> _157
 		_154 -> _146
 		_153 -> _154
+		_155 -> _156
+		_155 -> _157
 		_130 -> _152
 		_130 -> _153
 }

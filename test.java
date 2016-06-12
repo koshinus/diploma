@@ -21,10 +21,18 @@ void f_show() {}
 
 }
 
-class e
+class hd extends d
 {
 
 void e_show() {}
+
+void a_show() {}
+
+void hd_show() {}
+
+void h_show() {}
+
+void g_show() {}
 
 }
 
@@ -55,18 +63,10 @@ void b_show() {}
 
 }
 
-class hd extends d
+class e
 {
 
 void e_show() {}
-
-void a_show() {}
-
-void hd_show() {}
-
-void h_show() {}
-
-void g_show() {}
 
 }
 

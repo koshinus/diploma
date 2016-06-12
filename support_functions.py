@@ -5,7 +5,7 @@ def get_classes_id_list(untangle_obj):
 # --------------------------------------------------------------------
 def get_classes_graph(untangle_obj):
 	def form_class_hash(untangle_class):
-		def get_class_childs(class_id):
+		def get_class_children(class_id):
 			return ' '.join([str(Class['id']) for Class in untangle_obj.Class if class_id in Class['bases'].split(' ')])
 
 		# <Class id="_152" name="b" context="_1" mangled="1b" demangled="b" location="f1:10"
@@ -15,10 +15,13 @@ def get_classes_graph(untangle_obj):
 		# </Class>
 		class_hash = {}
 		class_hash['file'] = str(untangle_class['file'])
-		class_hash['childs'] = get_class_childs(untangle_class['id'])
+		class_hash['children'] = get_class_children(untangle_class['id'])
 		class_hash['bases'] = str(untangle_class['bases'])
 		class_hash['members'] = str(untangle_class['members'])
-		class_hash['abstract'] = str(untangle_class['abstract'])
+		if untangle_class['abstract'] == '1':
+			class_hash['abstract'] = '1'
+		else:
+			class_hash['abstract'] = '0'
 		class_hash['name'] = str(untangle_class['name'])
 		return class_hash
 
@@ -37,17 +40,25 @@ def get_methods_hash(untangle_obj):
 		# line="12" endline="12" inline="1"/>
 		method_hash['name'] = str(untangle_method['name'])
 		method_hash['returns'] = str(untangle_method['returns'])
-		method_hash['virtual'] = str(untangle_method['virtual'])
-		method_hash['overrides'] = str(untangle_method['overrides'])
+		if untangle_method['virtual'] == '1':
+			method_hash['virtual'] = '1'
+		else:
+			method_hash['virtual'] = '0'
+		if str(untangle_method['overrides']) != 'None':
+			method_hash['overrides'] = str(untangle_method['overrides'])
+		else:
+			method_hash['overrides'] = ''
 		method_hash['access'] = str(untangle_method['access'])
 		method_hash['file'] = str(untangle_method['file'])
 		method_hash['line'] = str(untangle_method['line'])
 		method_hash['endline'] = str(untangle_method['endline'])
 		if untangle_method['pure_virtual'] == '1':
 			method_hash['method_size'] = 1
+			method_hash['pure_virtual'] = '1'
 		else:
 			method_hash['method_size'] = 1 + \
-				int(str(untangle_method['endline'])) - int(str(untangle_method['line']))
+										 int(untangle_method['endline']) - int(untangle_method['line'])
+			method_hash['pure_virtual'] = '0'
 		method_hash['inline'] = str(untangle_method['inline'])
 		return method_hash
 
@@ -58,33 +69,21 @@ def get_methods_hash(untangle_obj):
 
 
 # --------------------------------------------------------------------
-def add_inherited_methods_to_classes(graph, untangle_obj):
+def add_inherited_methods_to_classes(graph, methods_hash):
 	def add_inherited_methods_to_class(base_id, child_id):
-		def get_inherited_methods():
-			def get_method_name_by_id(method_id):
-				for Method in untangle_obj.Method:
-					if Method['id'] == method_id: return Method['name']
-
-			def get_method_id_by_name(method_name):
-				for Method in untangle_obj.Method:
-					if Method['name'] == method_name: return Method['id']
-
-			methods_list = [str(Method['id']) for Method in untangle_obj.Method]
-			bases_members = [get_method_name_by_id(x) for x in graph[base_id]['members'].split(' ') if
-							 x in methods_list]
-			childs_members = [get_method_name_by_id(x) for x in graph[child_id]['members'].split(' ') if
-							  x in methods_list]
-			return ' '.join([get_method_id_by_name(x) for x in bases_members if x not in childs_members])
-
-		graph[child_id]['members'] += get_inherited_methods() + ' '
+		methods_list = methods_hash.keys()
+		base_methods = [z for z in graph[base_id]['members'].split(' ') if z in methods_list]
+		overriden_methods = [methods_hash[z]['overrides'].replace(' ', '') for z in
+								graph[child_id]['members'].split(' ')
+								if z in methods_list and methods_hash[z]['overrides'] != '']
+		graph[child_id]['members'] += ' '.join([z for z in base_methods if z not in overriden_methods]) + ' '
 
 	to_view = [x for x in graph.keys() if graph[x]['bases'] == '']
 	while to_view:
 		base_class = to_view.pop(0)
-		childs = graph[base_class]['childs'].split(' ')
-		if childs == ['']: continue
-		to_view += childs
-		for child in childs:
+		children = [x for x in graph[base_class]['children'].split(' ') if x != '']
+		to_view += children
+		for child in children:
 			add_inherited_methods_to_class(base_class, child)
 
 
@@ -102,7 +101,7 @@ def restructuring_classes_graph(graph, methods_hash):
 		k = list(d.keys())
 		return k[v.index(max(v))]
 
-	to_view = [x for x in graph.keys() if graph[x]['childs'] == '']
+	to_view = [x for x in graph.keys() if graph[x]['children'] == '']
 	while to_view:
 		child_class = to_view.pop(0)
 		if graph[child_class]['bases'] == '': continue
@@ -117,8 +116,8 @@ def restructuring_classes_graph(graph, methods_hash):
 		graph[child_class]['members'] = ' '.join(x for x in child_members if x not in base_members)
 		graph[child_class]['bases'] = chosen_base
 		for base in bases:
-			if base != chosen_base: graph[base]['childs'] = \
-				' '.join(x for x in graph[base]['childs'].split(' ') if x != child_class)
+			if base != chosen_base: graph[base]['children'] = \
+				' '.join(x for x in graph[base]['children'].split(' ') if x != child_class)
 
 
 # --------------------------------------------------------------------
